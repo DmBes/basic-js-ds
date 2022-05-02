@@ -27,6 +27,8 @@ class Queue {
 
 
   getUnderlyingList() {
+    let current = this.head;
+    return current;
 
 
 
@@ -34,14 +36,30 @@ class Queue {
   }
 
   enqueue( value ) {
-    if (this.o == null) this.head = ListNode(value);
+    if (this.head == null) {this.head = new ListNode(value);}
     else{
 
+      let current = this.head;
+      while (current.next)
+      {
+        current = current.next;
+      }
+      current.next = new ListNode(value)
+
     }
+    this.leght++;
 
   }
 
   dequeue() {
+    if (this.head == null) return 0;
+    let TopElement = this.head;
+    let v = TopElement.value;
+    let newHead = TopElement.next;
+    this.head = newHead;
+    this.leght--;
+    return v;
+
 
   }
 }
